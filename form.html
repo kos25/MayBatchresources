@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="formCss.css" type="text/css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"
+      integrity="sha256-bd8XIKzrtyJ1O5Sh3Xp3GiuMIzWC42ZekvrMMD4GxRg="
+      crossorigin="anonymous"
+    ></script>
+    <title>HTML session</title>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <!--  <img
+        src="logoImage.png"
+        alt="aletrnative_of_image"
+        width="100"
+        height="100"
+      /> -->
+      <center>
+        <h1>Register Yourself</h1>
+      </center>
+      <div class="fromConatiner">
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="Infieldname" for="FirstName">FirstName</label><br />
+            <input
+              type="text"
+              id="FirstName"
+              placeholder="Enter Your First name"
+              class="fields"
+              onclick="hideErrormsg('errmsgFname')"
+            /><br />
+            <span id="errmsgFname"></span>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="Infieldname" for="LastName">LastName</label><br />
+            <input
+              type="text"
+              id="LastName"
+              placeholder="Enter Your Last Name"
+              class="fields"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="Infieldname" for="DOB">Date Of Birth</label><br />
+            <input
+              type="Date"
+              id="DOB"
+              placeholder="Enter Your Date OF Birth"
+              class="fields"
+            />
+          </div>
+
+          <div class="col-sm-6">
+            <label class="Infieldname">Gernder</label><br />
+            <input type="Radio" id="M" />
+            <label class="Infieldname" for="M">Male</label><br />
+            <input type="Radio" id="F" />
+            <label class="Infieldname" for="F">Female</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <label class="Infieldname" for="Email">Email</label><br />
+            <input
+              type="text"
+              id="Email"
+              placeholder="Enter Your Email"
+              class="fields"
+              onclick="hideErrormsg('errMsgEmail')"
+            /><br />
+            <span id="errMsgEmail"></span>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="Infieldname" for="PhoneNumber">PhoneNumber</label
+            ><br />
+            <input
+              type="Number"
+              placeholder="Enter Your Phone number"
+              class="fields"
+              id="Phone"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <label class="Infieldname" for="Subject">Select Your Subject</label
+            ><br />
+            <select id="Sub" class="selectCss">
+              <option>--None--</option>
+              <option value="Maths">Maths</option>
+              <option value="Algo">Algo</option>
+              <option value="Java">Java</option>
+              <option value="Microntroller">Microntroller</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <label class="container"
+              >to agree with
+              <a
+                href="https://www.w3schools.com/tags/att_select_multiple.asp"
+                target="_blank"
+                >terms and conditions</a
+              >
+              please check the box
+              <input type="checkbox" checked="checked" />
+              <span class="checkmark"></span>
+            </label>
+            <br />
+            <button class="btn" onclick="myfunction()">Sumit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="Script.js"></script>
+  </body>
+</html>
