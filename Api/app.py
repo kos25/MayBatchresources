@@ -48,7 +48,6 @@ def get_taskList():
         t["id"] = task_list.id
         t["name"] = task_list.name    
         task_lists_list.append(t)
- 
       return jsonify(tasklist=task_lists_list) 
 
 @app.route('/tasklists' ,  methods = ['POST']) 
@@ -60,6 +59,60 @@ def create_task_lists():
    db.session.commit() 
    return jsonify(message = " task list is created") ,201
 
+
+
+# post a new task
+@app.route('/tasks', methods = ['POST'])  
+def create_task():
+   data = request.get_json()
+   text = data["text"]
+   list_id = data["list_id"]   
+   tl =  Tasks(text,list_id) 
+   db.session.add(tl)
+   db.session.commit()
+   return jsonify(message ="task  created") , 201    
+
+
+
+# get the task 
+@app.route('/tasks')
+def get_tasks():
+   task_lists_id  = request.args.get('task_list')
+   tasks = Tasks.query.filter_by(list_id = task_lists_id)
+   task_list = []
+   for task in tasks:
+    t={}
+    t["id"] = task.id 
+    t["text"] = task.text
+    t["Completed"]  = task.Completed
+    t["task_id"] = task.list_id
+    task_list.append(t)
+   return jsonify(task = task_list)
+
+
+
+# put the  task or update the task 
+@app.route('/tasks/<id>', methods = ['PUT'])
+def update_task(id):   
+   task = Tasks.query.filter_by (id = id).first()
+   task.Completed = not(task.Completed)
+   db.session.add(task)
+   db.session.commit()
+   return jsonify(message = "task updated" , task_id = task.id, task_Completed = task.Completed)
+
+
+
+
+# delete  the task 
+@app.route("/tasks/<id>" , methods = ['DELETE'])
+def delete(id):
+   task =  Tasks.query.filter_by (id = id).first() 
+   db.session.delete(task)
+   db.session.commit()
+   return jsonify(message = "delete task ")     
+
+   
+    
 
 
 
