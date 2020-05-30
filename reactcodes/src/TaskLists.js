@@ -10,7 +10,7 @@ import {
   Button,
   Input,
 } from "semantic-ui-react";
-export const Tasklists = () => {
+export const Tasklists = (props) => {
   return (
     <div>
       <Sidebar
@@ -30,9 +30,21 @@ export const Tasklists = () => {
           <h2>TaskLists</h2>
         </Menu.Item>
 
-        <Menu.Item as="a">Home</Menu.Item>
-        <Menu.Item as="a">Offcie</Menu.Item>
-        <Menu.Item as="a">Work</Menu.Item>
+        {
+                props.list.map(function(list,index){
+                    return(
+                        <div>
+                             <Menu.Item as="a" onClick={() => props.updatetask(list)}>{list.name}</Menu.Item>
+                        </div>
+                    )
+
+                })
+            }
+
+    
+
+
+
         <br />
 
         <Modal trigger={<Button color="green">Add TaskList</Button>}>
@@ -40,9 +52,9 @@ export const Tasklists = () => {
           <Modal.Content image>
             <Modal.Description>
               <Header>Add Task List</Header>
-              <Input fluid placeholder="Ex work , home , gym ......" />
+              <Input name="newListName" fluid placeholder="Ex work , home , gym ......"  onChange={props.Updatetext}/>
               <br />
-              <Button color="green">Add</Button>
+              <Button color="green" onClick={() => props.cretatenewValue('list')}>Add</Button>
             </Modal.Description>
           </Modal.Content>
         </Modal>
